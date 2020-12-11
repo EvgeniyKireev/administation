@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import { Header } from "./components/Header";
+import { Route } from "react-router-dom";
+import { MainContent } from "./components/MainContent";
+import { CreateUser } from "./components/CreateUser";
+import { ls } from "./common/localStorageAPI";
 
 function App() {
+  if (!localStorage.getItem("users")) {
+    ls.addDataToLocalArray("users", {
+      email: "admin@admin.ru",
+      password: "admin123",
+      phone: "79245415441",
+      fullName: "Иванов Иван",
+      role: "admin",
+      dateCreate: Date.now(),
+      dateChange: Date.now(),
+    });
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Route path={"/create"} render={() => <CreateUser />} />
+      <Route
+        path={"/"}
+        exact
+        render={() => <MainContent usersData={ls.getLocalData("users")} />}
+      />
     </div>
   );
 }

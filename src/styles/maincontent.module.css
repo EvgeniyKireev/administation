@@ -1,0 +1,24 @@
+.main{
+    display: flex;
+    flex-direction: column;
+}
+.option{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-bottom: 20px;
+}
+.people {
+    display: flex;
+    flex-direction: column;
+}
+
+@media all and (max-width: 500px) {
+    .option{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0px;
+        margin-bottom: 20px;
+    }
+}

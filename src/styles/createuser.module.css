@@ -1,0 +1,14 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.el {
+  margin-top: 30px;
+}
+.error {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    color: #EB5757;
+}
